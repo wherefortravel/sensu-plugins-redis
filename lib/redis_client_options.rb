@@ -13,6 +13,7 @@ module RedisClientOptions
 
   def default_redis_options
     opts = {}
+    opts[:username] = config[:username] if config[:username]
     opts[:password] = config[:password] if config[:password]
     opts[:timeout]  = config[:timeout]  if config[:timeout]
     opts[:db]       = config[:database] if config[:database]
@@ -70,6 +71,11 @@ module RedisClientOptions
              short: '-P PASSWORD',
              long: '--password PASSWORD',
              description: 'Redis Password to connect with'
+
+      option :username,
+             short: '-U USERNAME',
+             long: '--username USERNAME',
+             description: 'Redis username to connect with'
 
       option :transport,
              short: '-T TRANSPORT',
